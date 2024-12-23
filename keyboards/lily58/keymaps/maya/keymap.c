@@ -3,13 +3,7 @@
 // Flash command
 // avrdude -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -U/home/tomazella/qmk_firmware/.build/lily58_r2g_maya.hex
 
-enum layer_number {
-    _QWERTY = 0,
-    _NUMBER,
-    _SYMBOL,
-    _MOVEMENT,
-    _MOUSE
-};
+enum layer_number { _QWERTY = 0, _NUMBER, _SYMBOL, _MOVEMENT, _MOUSE };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -30,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
       KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5,                         KC_6, KC_7, KC_8, KC_9, KC_0, KC_BSPC, 
-      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                         KC_Y, KC_U, KC_I, KC_O, KC_P, KC_MINS,
+      KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                         KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC,
       KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G,                        KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
       KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, MO(_MOUSE),    KC_ENT, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RCTL,
       KC_LGUI, KC_LALT, MO(_SYMBOL), MO(_NUMBER),           KC_SPC, MO(_MOVEMENT), MO(_SYMBOL), KC_RSFT
@@ -38,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* NUMBER
      * ,-----------------------------------------.                    ,-----------------------------------------.
-     * |  v   |      |      |      |      |      |                    |      |      |      |      |      | Back | 
+     * |  v   |      |      |      |      |      |                    |      |      |      |      |      | Back |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * |  v   |  F5  |  F6  |  F7  |  F8  |      |                    |  7   |  8   |  9   |      |      |      |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -46,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|       |    |   v   |------+------+------+------+------+------|
      * |  v   |  F9  |  F10 |  F11 |  F12 |      |-------|    |-------|  1   |  2   |  3   |      |      | Inst |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *                   |   v  |  v   |      | /  v    /       \   v  \  |      |  0   |   v  |
+     *                   |   v  |  v   |      | /  v    /       \   v  \  |  0   |      |   v  |
      *                   |      |      |      |/       /         \      \ |      |      |      |
      *                   `----------------------------'           '------''--------------------'
      */
@@ -76,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYMBOL] = LAYOUT(
       KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC,
       KC_TRNS, KC_NO, KC_NO, KC_PERC, KC_DLR, KC_NO,                        KC_EXLM, KC_RBRC, KC_BSLS, KC_PLUS, KC_TILD, KC_HASH, 
-      KC_TRNS, KC_ASTR, KC_AT, LSFT(KC_LSFT), KC_SLSH, KC_NO,               KC_AMPR, KC_LPRN, KC_RPRN, KC_EQL, KC_GRV, KC_RCTL,
+      KC_TRNS, KC_ASTR, KC_AT, LSFT(KC_LBRC), LSFT(KC_SLSH), KC_NO,               KC_AMPR, KC_LPRN, KC_RPRN, KC_EQL, KC_GRV, KC_RCTL,
       KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           KC_TRNS, LSFT(KC_NUBS), KC_RCBR, KC_PIPE, KC_MINS, KC_UNDS, KC_NUBS,
                        KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,           KC_TRNS, KC_NO, KC_TRNS, KC_TRNS
     ),
