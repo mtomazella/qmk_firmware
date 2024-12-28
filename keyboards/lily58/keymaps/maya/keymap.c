@@ -3,6 +3,10 @@
 // Flash command
 // avrdude -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -U/home/tomazella/qmk_firmware/.build/lily58_r2g_maya.hex
 
+enum custom_keycodes {
+    ARROW = SAFE_RANGE
+};
+
 enum layer_number { _QWERTY = 0, _NUMBER, _SYMBOL, _MOVEMENT, _MOUSE };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -49,18 +53,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO,                            KC_7, KC_8, KC_9, KC_NO, KC_NO, KC_NO,
       KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO,                            KC_4, KC_5, KC_6, KC_NO, KC_NO, KC_NO,
       KC_TRNS, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_NO,         KC_TRNS, KC_1, KC_2, KC_3, KC_NO, KC_NO, KC_INS, 
-                          KC_TRNS, KC_TRNS, KC_NO, KC_TRNS,         KC_TRNS, KC_NO, KC_0, KC_TRNS
+                          KC_TRNS, KC_TRNS, KC_NO, KC_TRNS,         KC_TRNS, KC_0, KC_NO, KC_TRNS
     ),
 
     /* SYMBOL
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |  v   |      |      |      |      |      |                    |      |      |      |      |      | Back |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * |  v   |      |      |  %   |  $   |      |                    |  !   |  [   |  ]   |  +   |  "   |  #   |
+     * |  v   |  #   |      |  %   |  $   |      |                    |  !   |  [   |  ]   |  +   |  "   |  #   |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * |  v   |  *   |  @   |  ?   |  :   |      |-------.    ,-------|  &   |  (   |  )   |  =   |  '   |  /   |
+     * |  v   |  *   |  @   |  ?   |  :   |  =>  |-------.    ,-------|  &   |  (   |  )   |  =   |  '   |  /   |
      * |------+------+------+------+------+------|       |    |   v   |------+------+------+------+------+------|
-     * |  v   |      |      |      |      |      |-------|    |-------|  |   |  {   |  }   |  -   |  _   |  \   |
+     * |  v   |      |      |  <   |  >   |      |-------|    |-------|  |   |  {   |  }   |  -   |  _   |  \   |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *                   |   v  |  v   |  v   | /       /       \   v  \  |      |  v   |   v  |
      *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -68,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [_SYMBOL] = LAYOUT(
-      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC,
-      KC_TRNS, KC_NO, KC_NO, KC_PERC, KC_DLR, KC_NO,                        KC_EXLM, KC_RBRC, KC_BSLS, KC_PLUS, KC_TILD, KC_HASH, 
-      KC_TRNS, KC_ASTR, KC_AT, LSFT(KC_LBRC), LSFT(KC_SLSH), KC_NO,               KC_AMPR, KC_LPRN, KC_RPRN, KC_EQL, KC_GRV, KC_RCTL,
-      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,           KC_TRNS, LSFT(KC_NUBS), KC_RCBR, KC_PIPE, KC_MINS, KC_UNDS, KC_NUBS,
-                       KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,           KC_TRNS, KC_NO, KC_TRNS, KC_TRNS
+      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC,
+      KC_TRNS, KC_HASH, KC_NO, KC_PERC, KC_DLR, KC_NO,                                        KC_EXLM, KC_RBRC, KC_BSLS, KC_PLUS, KC_TILD, KC_HASH, 
+      KC_TRNS, KC_ASTR, KC_AT, LSFT(KC_LBRC), LSFT(KC_SLSH), ARROW,                           KC_AMPR, KC_LPRN, KC_RPRN, KC_EQL, KC_GRV, KC_RCTL,
+      KC_TRNS, KC_NO, KC_NO, LSFT(KC_COMM), LSFT(KC_DOT), KC_NO, KC_NO,           KC_TRNS, LSFT(KC_NUBS), KC_RCBR, KC_PIPE, KC_MINS, KC_UNDS, KC_NUBS,
+                       KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,                          KC_TRNS, KC_NO, KC_TRNS, KC_TRNS
     ),
 
     /* MOVEMENT
@@ -168,5 +172,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
         // set_timelog();
     }
+
+    switch (keycode) {
+    case ARROW:
+        if (record->event.pressed) {
+            SEND_STRING("=>");
+        }
+        break;
+    }
+
     return true;
 }
