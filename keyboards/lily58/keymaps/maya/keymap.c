@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYMBOL] = LAYOUT(
       KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC,
       KC_TRNS, KC_HASH, KC_NO, KC_PERC, KC_DLR, KC_NO,                                        KC_EXLM, KC_RBRC, KC_BSLS, KC_PLUS, KC_TILD, KC_HASH, 
-      KC_TRNS, KC_ASTR, KC_AT, LSFT(KC_LBRC), LSFT(KC_SLSH), ARROW,                           KC_AMPR, KC_LPRN, KC_RPRN, KC_EQL, KC_GRV, KC_RCTL,
+      KC_TRNS, KC_ASTR, KC_AT, LSFT(KC_RCTL), LSFT(KC_SLSH), ARROW,                           KC_AMPR, KC_LPRN, KC_RPRN, KC_EQL, KC_GRV, KC_RCTL,
       KC_TRNS, KC_NO, KC_NO, LSFT(KC_COMM), LSFT(KC_DOT), KC_NO, KC_NO,           KC_TRNS, LSFT(KC_NUBS), KC_RCBR, KC_PIPE, KC_MINS, KC_UNDS, KC_NUBS,
                        KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,                          KC_TRNS, KC_NO, KC_TRNS, KC_TRNS
     ),
