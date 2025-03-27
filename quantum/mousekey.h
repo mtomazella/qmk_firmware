@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdint.h>
 #include "host.h"
 
+#define MK_COMBINED
+
 #ifndef MK_3_SPEED
 
 /* max value on report descriptor */
@@ -66,7 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #        if defined(MOUSEKEY_INERTIA)
 #            define MOUSEKEY_MAX_SPEED 32
 #        else
-#            define MOUSEKEY_MAX_SPEED 10
+#            define MOUSEKEY_MAX_SPEED 5
 #        endif
 #    endif
 #    ifndef MOUSEKEY_TIME_TO_MAX
@@ -102,7 +104,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #        define MOUSEKEY_BASE_SPEED 5000
 #    endif
 #    ifndef MOUSEKEY_DECELERATED_SPEED
-#        define MOUSEKEY_DECELERATED_SPEED 400
+#        define MOUSEKEY_DECELERATED_SPEED 10
 #    endif
 #    ifndef MOUSEKEY_ACCELERATED_SPEED
 #        define MOUSEKEY_ACCELERATED_SPEED 3000

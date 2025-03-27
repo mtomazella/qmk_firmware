@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+// qmk compile
 // Flash command
 // avrdude -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -U/home/tomazella/qmk_firmware/.build/lily58_r2g_maya.hex
 
@@ -117,17 +118,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                   `----------------------------'           '------''--------------------'
      */
     [_MOUSE] = LAYOUT(
-      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                       MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, KC_NO, KC_DEL,
-      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_DEL,
+      KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                       MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, KC_NO, KC_NO,
       KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                       MS_LEFT, MS_DOWN, MS_UP, MS_RGHT, KC_NO, KC_NO,
       KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS,                     KC_TRNS, MS_BTN1, MS_BTN2, MS_BTN3, MS_BTN4, MS_BTN5, KC_NO,
                          KC_TRNS, KC_TRNS, KC_NO, KC_NO,                       KC_TRNS, MS_ACL0, MS_ACL1, MS_ACL2
     )
   };
-
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     return update_tri_layer_state(state, _NUMBER, _SYMBOL, _MOVEMENT);
-// }
 
 // SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
